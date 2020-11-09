@@ -7,12 +7,16 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.fxml.FXMLLoader;
 
 import java.io.FileNotFoundException;
 
 public class Controller {
 
     Order order = new Order();
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("project4details.fxml"));
+    Controller2 controller2 = loader.getController();
+    
 
     @FXML
     ComboBox<String> sandSelector;
@@ -33,6 +37,7 @@ public class Controller {
         Image picture = new Image("https://natashaskitchen.com/wp-content/uploads/2020/06/Chicken-Sandwich-7.jpg") ;
         sandImage.setImage(picture) ;
         resetExtras() ;
+        controller2.setView1Controller(this) ;
 
     }
 
@@ -125,6 +130,18 @@ public class Controller {
         event.consume() ;
         resetExtras() ;
 
+    }
+
+    @FXML
+    public void orderAdd(ActionEvent event) {
+
+        event.consume() ;
+
+    }
+    
+    @FXML
+    public void orderShow(ActionEvent event){
+        
     }
 
     public void resetExtras() {

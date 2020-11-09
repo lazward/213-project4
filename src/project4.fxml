@@ -24,7 +24,7 @@
       <Button fx:id="clearSubmit" layoutX="175.0" layoutY="295.0" mnemonicParsing="false" onAction="#ingredientClear" text="Clear Selected" />
       <Label layoutX="428.0" layoutY="205.0" prefHeight="18.0" prefWidth="58.0" text="Price $" />
       <TextField fx:id="butt" layoutX="428.0" layoutY="228.0" prefHeight="26.0" prefWidth="118.0" />
-      <Button fx:id="orderAddSubmit" layoutX="426.0" layoutY="272.0" mnemonicParsing="false" text="Add to Order" />
-      <Button fx:id="orderShowSubmit" layoutX="430.0" layoutY="305.0" mnemonicParsing="false" text="Show Order" />
+      <Button fx:id="orderAddSubmit" layoutX="427.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderAdd" text="Add to Order" />
+      <Button fx:id="orderShowSubmit" layoutX="431.0" layoutY="328.0" mnemonicParsing="false" onAction="#orderShow" text="Show Order" />
    </children>
 </AnchorPane>
