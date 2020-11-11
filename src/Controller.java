@@ -2,21 +2,26 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Controller {
 
-    Order order = new Order();
-    FXMLLoader loader = new FXMLLoader(getClass().getResource("project4details.fxml"));
-    Controller2 controller2 = loader.getController();
-    
+    Order order ;
+
+    Parent parent ;
+
+    Controller2 controller2;
 
     @FXML
     ComboBox<String> sandSelector;
@@ -27,17 +32,19 @@ public class Controller {
     @FXML
     ImageView sandImage;
 
+    @FXML
+    Button addSubmit, removeSubmit, clearSubmit, orderAddSubmit, orderShowSubmit;
+
     public void initialize() {
+
+        order = new Order();
 
         ObservableList<String> types = FXCollections.observableArrayList("Chicken", "Beef", "Fish");
         sandSelector.setItems(types);
-        sandSelector.getSelectionModel().selectFirst();
-        ObservableList<String> ingredients = FXCollections.observableArrayList("Fried Chicken", "Spicy Sauce", "Pickles");
-        includedIngredients.getItems().setAll(ingredients);
-        Image picture = new Image("https://natashaskitchen.com/wp-content/uploads/2020/06/Chicken-Sandwich-7.jpg") ;
-        sandImage.setImage(picture) ;
-        resetExtras() ;
-        controller2.setView1Controller(this) ;
+        
+    
+        resetExtras();
+        resetType() ;
 
     }
 
@@ -99,6 +106,12 @@ public class Controller {
 
         }
 
+        if (ingredientExtras.getItems().size() == Sandwich.MAX_EXTRAS) {
+
+            return ;
+
+        }
+
         ingredientExtras.getItems().add(selected) ;
         ingredientChoices.getItems().remove(selected) ;
 
@@ -129,6 +142,7 @@ public class Controller {
 
         event.consume() ;
         resetExtras() ;
+        resetType() ;
 
     }
 
@@ -136,11 +150,73 @@ public class Controller {
     public void orderAdd(ActionEvent event) {
 
         event.consume() ;
+        String type = (String) sandSelector.getValue();
+        ObservableList<String> extras = ingredientExtras.getItems() ;
+        if (type.equals("Chicken")) {
+
+            Chicken chicken = new Chicken() ;
+            for (String i : extras) {
+                
+
+                Extra name = new Extra(i) ;
+                chicken.add(name) ;
+
+            }
+
+            order.add(chicken) ;
+
+        } else if (type.equals("Beef")) {
+
+            Beef beef = new Beef() ;
+            for (String i : extras) {
+
+                Extra name = new Extra(i) ;
+                beef.extras.add(name) ;
+
+            }
+
+            order.add(beef) ;
+
+        } else if (type.equals("Fish")) {
+
+            Fish fish = new Fish() ;
+            for (String i : extras) {
+
+                Extra name = new Extra(i) ;
+                fish.extras.add(name) ;
+
+            }
+
+            order.add(fish) ;
+
+        } else {
+
+
+
+        }
 
     }
-    
     @FXML
-    public void orderShow(ActionEvent event){
+    public void orderShowSubmit(ActionEvent event){
+        event.consume() ;
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("project4details.fxml"));
+            parent = loader.load() ;
+            controller2 = loader.getController();
+            controller2.setView1Controller(this);
+            controller2.refresh() ;
+            Stage stage = new Stage();
+            stage.setTitle("Order Details") ;
+            stage.setScene(new Scene(parent)) ;
+            stage.show() ;
+    
+            } catch (Exception e) {
+    
+                return ;
+    
+            }
+        
         
     }
 
@@ -149,6 +225,17 @@ public class Controller {
         ObservableList<String> choices = FXCollections.observableArrayList("Spicy Mayo", "Onions", "Mushrooms", "Kimchi", "Colgate Toothpaste", "Milano Cookies", "Sesame Oil", "Ginger-Garlic Paste", "Caviar", "Jello") ;
         ingredientChoices.getItems().setAll(choices) ;
         ingredientExtras.getItems().clear() ;
+
+    }
+
+    public void resetType() {
+
+        sandSelector.getSelectionModel().selectFirst();
+        ObservableList<String> ingredients = FXCollections.observableArrayList("Fried Chicken", "Spicy Sauce",
+                "Pickles");
+        includedIngredients.getItems().setAll(ingredients);
+        Image picture = new Image("https://natashaskitchen.com/wp-content/uploads/2020/06/Chicken-Sandwich-7.jpg");
+        sandImage.setImage(picture);
 
     }
     

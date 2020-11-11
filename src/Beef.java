@@ -14,4 +14,33 @@ public class Beef extends Sandwich {
 
     }
 
+    @Override
+    public boolean add(Object obj) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean remove(Object obj) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public String toString() {
+
+        String listOfExtras = "" ;
+
+        for (Extra i : extras) {
+
+            listOfExtras = listOfExtras.concat(" " + i.name + ",") ;
+
+        }
+
+        return "Beef Sandwich; " + listOfExtras + "Price $" + price() ;
+
+    }
+    }
+    
+
 }
