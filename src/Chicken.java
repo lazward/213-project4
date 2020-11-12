@@ -1,4 +1,9 @@
-import java.util.ArrayList;
+/**
+ * This class represents a type sandwich made with Chicken.
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ *
+ */
 
 public class Chicken extends Sandwich {
 
@@ -11,6 +16,7 @@ public class Chicken extends Sandwich {
 
     @Override
     public boolean add(Object obj) {
+
        //Adding extras into extra
 
        extras.add((Extra)obj);
@@ -19,7 +25,7 @@ public class Chicken extends Sandwich {
 
     @Override
     public boolean remove(Object obj) {
-        extras.remove(extras.indexOf(Extra)obj);
+        extras.remove(extras.indexOf((Extra)obj));
         return true;
     }
 
@@ -34,7 +40,7 @@ public class Chicken extends Sandwich {
 
         }
 
-        return "Chicken Sandwich; " + listOfExtras + "Price $" + price() ;
+        return "Chicken Sandwich; Fried Chicken, Spicy Sauce, Pickles, " + listOfExtras + "Price $" + price() ;
 
     }
     

@@ -7,14 +7,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import javafx.fxml.FXMLLoader;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-
+/**
+ * 
+ * This is the main controller class for the GUI.
+ * It is used for controlling both FXML and non-FXML methods to display information to the user.
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ */
 public class Controller {
 
     Order order ;
@@ -35,6 +40,9 @@ public class Controller {
     @FXML
     Button addSubmit, removeSubmit, clearSubmit, orderAddSubmit, orderShowSubmit;
 
+    @FXML
+    TextField price ;
+
     public void initialize() {
 
         order = new Order();
@@ -42,9 +50,9 @@ public class Controller {
         ObservableList<String> types = FXCollections.observableArrayList("Chicken", "Beef", "Fish");
         sandSelector.setItems(types);
         
-    
         resetExtras();
         resetType() ;
+        priceUpdate() ;
 
     }
 
@@ -62,8 +70,6 @@ public class Controller {
             //FileInputStream image = new FileInputStream("chicken_sammy.jpg") ;
             Image picture = new Image("https://natashaskitchen.com/wp-content/uploads/2020/06/Chicken-Sandwich-7.jpg") ;
             sandImage.setImage(picture) ;
-            
-
 
         } else if(value.equals("Beef")) {
 
@@ -90,6 +96,7 @@ public class Controller {
         }
 
         resetExtras() ;
+        priceUpdate() ;
 
     }
 
@@ -115,6 +122,7 @@ public class Controller {
         ingredientExtras.getItems().add(selected) ;
         ingredientChoices.getItems().remove(selected) ;
 
+        priceUpdate() ;
 
     }
 
@@ -134,6 +142,7 @@ public class Controller {
         ingredientChoices.getItems().add(selected);
         ingredientExtras.getItems().remove(selected) ;
 
+        priceUpdate() ;
 
     }
 
@@ -143,6 +152,7 @@ public class Controller {
         event.consume() ;
         resetExtras() ;
         resetType() ;
+        priceUpdate() ;
 
     }
 
@@ -213,6 +223,7 @@ public class Controller {
     
             } catch (Exception e) {
     
+                e.printStackTrace();
                 return ;
     
             }
@@ -236,6 +247,55 @@ public class Controller {
         includedIngredients.getItems().setAll(ingredients);
         Image picture = new Image("https://natashaskitchen.com/wp-content/uploads/2020/06/Chicken-Sandwich-7.jpg");
         sandImage.setImage(picture);
+
+    }
+
+    public void priceUpdate() {
+
+        String type = (String) sandSelector.getValue();
+        ObservableList<String> extras = ingredientExtras.getItems() ;
+        if (type.equals("Chicken")) {
+
+            Chicken chicken = new Chicken() ;
+            for (String i : extras) {
+                
+
+                Extra name = new Extra(i) ;
+                chicken.add(name) ;
+
+            }
+
+            price.setText(String.format("%.2f", chicken.price())) ;
+
+        } else if (type.equals("Beef")) {
+
+            Beef beef = new Beef() ;
+            for (String i : extras) {
+
+                Extra name = new Extra(i) ;
+                beef.extras.add(name) ;
+
+            }
+
+            price.setText(String.format("%.2f", beef.price())) ;
+
+        } else if (type.equals("Fish")) {
+
+            Fish fish = new Fish() ;
+            for (String i : extras) {
+
+                Extra name = new Extra(i) ;
+                fish.extras.add(name) ;
+
+            }
+
+            price.setText(String.format("%.2f", fish.price())) ;
+
+        } else {
+
+
+
+        }
 
     }
     

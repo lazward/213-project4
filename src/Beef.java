@@ -1,3 +1,10 @@
+/**
+ * This is an extended sandwhich class for beef sandwiches.$
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ *
+ */
+
 public class Beef extends Sandwich {
     
     @Override
@@ -8,22 +15,15 @@ public class Beef extends Sandwich {
     }
 
     @Override
-    public String toString() {
-
-        return "Beef Sandwich, Roast Beef, Provolone Cheese, Mustard, " ;
-
-    }
-
-    @Override
     public boolean add(Object obj) {
-        // TODO Auto-generated method stub
-        return false;
+        extras.add((Extra)obj);
+       return true;
     }
 
     @Override
     public boolean remove(Object obj) {
-        // TODO Auto-generated method stub
-        return false;
+        extras.remove(extras.indexOf((Extra)obj));
+        return true;
     }
 
     @Override
@@ -33,14 +33,12 @@ public class Beef extends Sandwich {
 
         for (Extra i : extras) {
 
-            listOfExtras = listOfExtras.concat(" " + i.name + ",") ;
+            listOfExtras = listOfExtras.concat(i.name + ", ") ;
 
         }
 
-        return "Beef Sandwich; " + listOfExtras + "Price $" + price() ;
+        return "Beef Sandwich; Roast Beef, Provolone Cheese, Mustard, " + listOfExtras + "Price $" + price() ;
 
     }
     }
     
-
-}

@@ -1,8 +1,11 @@
 import java.util.ArrayList;
 
-import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
-
+/**
+ * 
+ * This is the order class, it features helper and main methods for the manipulations of entire orders.
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ */
 public class Order implements Customizable {
 
     public static int lineNumber ;
@@ -23,7 +26,7 @@ public class Order implements Customizable {
         Sandwich s = (Sandwich)obj ;
         OrderLine newLine = new OrderLine(lineNumber, s, s.price()) ;
         orderLines.add(newLine) ;
-		return false;
+		return true;
 	}
 	@Override
 	public boolean remove(Object obj) {

@@ -10,20 +10,20 @@
 
 <AnchorPane fx:id="menuPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
    <children>
-      <ComboBox fx:id="sandSelector" layoutX="40.0" layoutY="54.0" onAction="#selectType" prefWidth="150.0" visibleRowCount="3" />
-      <Label layoutX="54.0" layoutY="28.0" prefHeight="26.0" prefWidth="150.0" text="Sandwich Type" />
-      <ImageView fx:id="sandImage" fitHeight="150.0" fitWidth="200.0" layoutX="386.0" layoutY="41.0" pickOnBounds="true" preserveRatio="true" />
-      <Label layoutX="237.0" layoutY="28.0" prefHeight="26.0" prefWidth="117.0" text="Ingredients Included" />
-      <ListView fx:id="includedIngredients" layoutX="224.0" layoutY="53.0" prefHeight="52.0" prefWidth="150.0" />
-      <Label layoutX="40.0" layoutY="123.0" prefHeight="18.0" prefWidth="150.0" text="Ingredient Selections" />
-      <Label layoutX="279.0" layoutY="123.0" prefHeight="18.0" prefWidth="150.0" text="Extra Ingredients" />
-      <ListView fx:id="ingredientChoices" layoutX="33.0" layoutY="141.0" prefHeight="200.0" prefWidth="127.0" />
-      <ListView fx:id="ingredientExtras" layoutX="269.0" layoutY="141.0" prefHeight="200.0" prefWidth="135.0" />
-      <Button fx:id="addSubmit" layoutX="192.0" layoutY="202.0" mnemonicParsing="false" onAction="#ingredientAdd" text="Add &gt;&gt;" />
-      <Button fx:id="removeSubmit" layoutX="181.0" layoutY="251.0" mnemonicParsing="false" onAction="#ingredientRemove" text="&lt;&lt; Remove" />
-      <Button fx:id="clearSubmit" layoutX="175.0" layoutY="295.0" mnemonicParsing="false" onAction="#ingredientClear" text="Clear Selected" />
+      <ComboBox fx:id="sandSelector" layoutX="14.0" layoutY="29.0" onAction="#selectType" prefWidth="150.0" visibleRowCount="3" />
+      <Label layoutX="14.0" layoutY="2.0" prefHeight="26.0" prefWidth="150.0" text="Sandwich Type" />
+      <ImageView fx:id="sandImage" fitHeight="150.0" fitWidth="200.0" layoutX="394.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="238.0" layoutY="1.0" prefHeight="26.0" prefWidth="117.0" text="Ingredients Included" />
+      <ListView fx:id="includedIngredients" disable="true" layoutX="237.0" layoutY="27.0" prefHeight="76.0" prefWidth="150.0" />
+      <Label layoutX="14.0" layoutY="123.0" prefHeight="18.0" prefWidth="150.0" text="Ingredient Selections" />
+      <Label layoutX="244.0" layoutY="123.0" prefHeight="18.0" prefWidth="150.0" text="Extra Ingredients" />
+      <ListView fx:id="ingredientChoices" layoutX="14.0" layoutY="141.0" prefHeight="239.0" prefWidth="127.0" />
+      <ListView fx:id="ingredientExtras" layoutX="244.0" layoutY="141.0" prefHeight="239.0" prefWidth="135.0" />
+      <Button fx:id="addSubmit" layoutX="164.0" layoutY="166.0" mnemonicParsing="false" onAction="#ingredientAdd" text="Add &gt;&gt;" />
+      <Button fx:id="removeSubmit" layoutX="154.0" layoutY="211.0" mnemonicParsing="false" onAction="#ingredientRemove" text="&lt;&lt; Remove" />
+      <Button fx:id="clearSubmit" layoutX="148.0" layoutY="254.0" mnemonicParsing="false" onAction="#ingredientClear" text="Clear Selected" />
       <Label layoutX="428.0" layoutY="205.0" prefHeight="18.0" prefWidth="58.0" text="Price $" />
-      <TextField fx:id="butt" layoutX="428.0" layoutY="228.0" prefHeight="26.0" prefWidth="118.0" />
+      <TextField fx:id="price" layoutX="428.0" layoutY="228.0" prefHeight="26.0" prefWidth="118.0" />
       <Button fx:id="orderAddSubmit" layoutX="427.0" layoutY="295.0" mnemonicParsing="false" onAction="#orderAdd" text="Add to Order" />
       <Button fx:id="orderShowSubmit" layoutX="431.0" layoutY="328.0" mnemonicParsing="false" onAction="#orderShowSubmit" text="Show Order" />
    </children>

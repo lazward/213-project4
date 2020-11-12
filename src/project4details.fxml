@@ -13,8 +13,8 @@
       <Button fx:id="orderRemove" layoutX="145.0" layoutY="265.0" mnemonicParsing="false" onAction="#removeOrder" text="Remove order" />
       <Button fx:id="orderClear" layoutX="12.0" layoutY="311.0" mnemonicParsing="false" onAction="#clearOrder" prefHeight="25.0" prefWidth="99.0" text="Clear order" />
       <Button fx:id="orderBack" layoutX="147.0" layoutY="311.0" mnemonicParsing="false" onAction="#backOrder" prefHeight="25.0" prefWidth="91.0" text="Back" />
-      <Label layoutX="435.0" layoutY="269.0" prefHeight="17.0" prefWidth="133.0" text="Total Cost" />
-      <Button fx:id="orderSave" layoutX="431.0" layoutY="324.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="141.0" text="Save to file" />
+      <Label layoutX="435.0" layoutY="269.0" prefHeight="17.0" prefWidth="133.0" text="Total Cost $" />
+      <Button layoutX="431.0" layoutY="324.0" mnemonicParsing="false" onAction="#saveOrder" prefHeight="25.0" prefWidth="141.0" text="Save to file" />
       <TextField fx:id="orderTotal" layoutX="428.0" layoutY="291.0" />
    </children>
 </AnchorPane>

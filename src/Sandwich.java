@@ -1,5 +1,11 @@
 import java.util.ArrayList;
 
+/**
+ * 
+ * This sandwich class represents a generic sandwich, containing extras and costs associated with them.
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ */
 public abstract class Sandwich implements Customizable {
 
     static final int MAX_EXTRAS = 6 ;
@@ -7,7 +13,11 @@ public abstract class Sandwich implements Customizable {
     protected ArrayList<Extra> extras ;
 
     public abstract double price() ;
-    public String toString() ;
+    public String toString() {
+       
+        return "" ;
+        
+    }
 
     public Sandwich() {
 

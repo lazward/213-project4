@@ -1,3 +1,10 @@
+/**
+ * 
+ * This class represents an orderline. It has methods for the retrival and maniuplation of specific components.
+ * 
+ * @author Aarif Razak ahr58, Julian Lee jl2203
+ */
+
 public class OrderLine {
 
     private int lineNumber ;
@@ -12,8 +19,8 @@ public class OrderLine {
 
     }
 
-    public int getLineNum(OrderLine line){
-        return line.lineNumber;
+    public int getLineNum(){
+        return lineNumber;
     }
 
     public void setLineNum(int n){
@@ -23,6 +30,12 @@ public class OrderLine {
     public Sandwich getSammy() { // Aarif wanted to make a method called getSammy so here we are..
 
         return sandwich ;
+
+    }
+
+    public double getPrice() {
+
+        return price ;
 
     }
     
